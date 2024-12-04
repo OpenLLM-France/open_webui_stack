@@ -1,0 +1,10 @@
+[submodule "pipelines"]
+	path = pipelines
+	url = https://github.com/Ahmath-Gadji/pipelines.git
+[submodule "webui"]
+	path = webui
+	url = https://github.com/OpenLLM-France/open_webui.git
+[submodule "RAGondin"]
+	path = RAGondin
+	url = https://github.com/OpenLLM-France/RAGondin.git
+	branch = rag-chainlit

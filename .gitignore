@@ -1,0 +1,10 @@
+certbot/*
+.venv/
+ssl/*
+conf.d/*
+#  sous-dossiers de venvs_library
+venvs_library/**/*
+# garder subfolder vides de venvs_library
+!venvs_library/**/
+# garder venvs_library 
+!venvs_library/
