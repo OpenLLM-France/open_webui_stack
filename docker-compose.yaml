@@ -1,0 +1,4 @@
+include:
+  - RAGondin/docker-compose.yaml
+  - pipelines/docker-compose.yaml
+  - webui/docker-compose.yaml
