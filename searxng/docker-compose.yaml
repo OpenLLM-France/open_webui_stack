@@ -1,0 +1,7 @@
+services:
+  searxng:
+    image: searxng/searxng:latest
+    container_name: searxng
+    volumes:
+      - ./searxng:/etc/searxng
+    restart: always

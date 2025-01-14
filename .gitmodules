@@ -1,0 +1,4 @@
+[submodule "open-webui"]
+	path = open-webui
+	url = https://github.com/OpenLLM-France/open-webui.git
+	branch = release/1.0
