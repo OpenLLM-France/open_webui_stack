@@ -1,4 +1,6 @@
 include:
+  - litellm/docker-compose.yaml
   - open-webui/docker-compose.yaml
   - nginx/docker-compose.yaml
   - searxng/docker-compose.yaml
+  - FanLine/docker-compose.yml

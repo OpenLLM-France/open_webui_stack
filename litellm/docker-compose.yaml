@@ -1,0 +1,23 @@
+services:
+  litellm:
+    image: ghcr.io/berriai/litellm:main-latest
+    # ports:
+    #   - "4000:4000"
+    volumes:
+      - ./litellm-config.yaml:/app/config.yaml
+    env_file:
+      - .env
+    command: >
+      --config /app/config.yaml --port 4000 --num_workers 8 --detailed_debug
+    depends_on:
+      - postgres # Ensure the PostgreSQL service is started before litellm
+
+  postgres:
+    image: postgres:latest
+    env_file:
+      - .env
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432" 
+    restart: always
