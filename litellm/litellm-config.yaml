@@ -1,21 +1,33 @@
 model_list:
-  - model_name: Lucie_7B
+  - model_name: Lucie
     litellm_params:
-      model: openai/lucie-7b
+      model: openai/lucie-7b-instruct
       api_base: os.environ/BASE_URL
-      api_key: os.environ/LUCIE_API_KEY
-      max_tokens: 1000
-      input_cost_per_token: 0.000003
-      output_cost_per_token: 0.000015
-  
-  # - model_name: Meta_Llama_31_8b_it
-  #   litellm_params:
-  #     model: openai/meta-llama-31-8b-it
-  #     api_base: os.environ/BASE_URL
-  #     api_key: os.environ/LLAMA31_API_KEY
-  #     max_tokens: 1000
-  #     input_cost_per_token: 0.000003
-  #     output_cost_per_token: 0.000003
+      api_key: os.environ/LUCIE_API_KEY_01
+  - model_name: Lucie
+    litellm_params:
+      model: openai/lucie-7b-instruct
+      api_base: os.environ/BASE_URL
+      api_key: os.environ/LUCIE_API_KEY_02
+  - model_name: Lucie
+    litellm_params:
+      model: openai/lucie-7b-instruct
+      api_base: os.environ/BASE_URL
+      api_key: os.environ/LUCIE_API_KEY_03
+  - model_name: Lucie
+    litellm_params:
+      model: openai/lucie-7b-instruct
+      api_base: os.environ/BASE_URL
+      api_key: os.environ/LUCIE_API_KEY_04
+  - model_name: Lucie
+    litellm_params:
+      model: openai/lucie-7b-instruct
+      api_base: os.environ/BASE_URL
+      api_key: os.environ/LUCIE_API_KEY_05
+
+
+router_settings:
+  routing_strategy: simple-shuffle # Literal["simple-shuffle", "least-busy", "usage-based-routing","latency-based-routing"], default="simple-shuffle"
 
 general_settings: 
   master_key: os.environ/LITELLM_MASTER_KEY

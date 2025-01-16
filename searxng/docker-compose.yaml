@@ -5,3 +5,8 @@ services:
     volumes:
       - ./searxng:/etc/searxng
     restart: always
+    networks:
+      - lucie-network
+networks:
+  lucie-network:
+    external: true

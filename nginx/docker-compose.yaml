@@ -6,3 +6,13 @@ services:
     volumes:
       - ./conf.d:/etc/nginx/conf.d
       # - ./certbot:/etc/nginx/certbot
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == manager] # Only on manager
+    networks:
+      - lucie-network
+
+networks:
+  lucie-network:
+    external: true

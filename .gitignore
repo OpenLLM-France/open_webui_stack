@@ -9,4 +9,5 @@ venvs_library/**/*
 # garder venvs_library 
 !venvs_library/
 .env
+*.env
 litellm/postgres_data
