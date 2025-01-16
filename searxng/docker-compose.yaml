@@ -3,7 +3,7 @@ services:
     image: searxng/searxng:latest
     container_name: searxng
     volumes:
-      - ./searxng:/etc/searxng
+      - /mnt/searxng:/etc/searxng
     restart: always
     networks:
       - lucie-network
