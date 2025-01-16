@@ -11,11 +11,14 @@ services:
       - postgres # Ensure the PostgreSQL service is started before litellm
     networks:
       - lucie-network
+    deploy:
+      replicas: 2
+
 
   postgres:
     image: postgres:latest
     env_file:
-      - .env
+      - /mnt/envs/.env
     volumes:
       - /mnt/postgres_data:/var/lib/postgresql/data
     restart: always
