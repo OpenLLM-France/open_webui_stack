@@ -1,0 +1,69 @@
+services:
+  webui:
+    image: ghcr.io/openllm-france/open-webui:release-1.0
+    env_file:
+      - /mnt/envs/.env
+    volumes:
+      - /mnt/open-webui-data:/app/backend/data
+      - /mnt/guardrails:/root/.cache/torch/hub/checkpoints/
+      - /mnt/inbox:/inbox
+    networks:
+      - lucie-network
+    deploy:
+      replicas: 8
+    depends_on:
+      - postgres
+      - litellm
+    hostname: 'webui-{{.Task.Slot}}'
+
+  
+  litellm:
+    image: ghcr.io/berriai/litellm:main-latest
+    volumes:
+      - /mnt/litellm/litellm-config.yaml:/app/config.yaml
+    env_file:
+      - /mnt/envs/.env
+    command: >
+      --config /app/config.yaml --port 4000 --num_workers 8 --detailed_debug
+    depends_on:
+      - postgres
+    networks:
+      - lucie-network
+    deploy:
+      replicas: 2
+
+
+  postgres:
+    image: postgres:latest
+    env_file:
+      - /mnt/envs/.env
+    volumes:
+      - /mnt/postgres_data:/var/lib/postgresql/data
+    networks:
+      - lucie-network
+  
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == manager] # Only on manager
+    networks:
+      - lucie-network
+    depends_on:
+      - webui
+  
+  mailsender:
+    image: ghcr.io/openllm-france/send-email
+    volumes:
+      - /mnt/inbox:/inbox
+    env_file:
+      - /mnt/envs/email.env
+
+networks:
+  lucie-network:
+    external: true

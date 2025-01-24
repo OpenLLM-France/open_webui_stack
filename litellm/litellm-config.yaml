@@ -24,7 +24,26 @@ model_list:
       model: openai/lucie-7b-instruct
       api_base: os.environ/BASE_URL
       api_key: os.environ/LUCIE_API_KEY_05
-
+  - model_name: Lucie
+    litellm_params:
+      model: openai/lucie-7b-instruct
+      api_base: os.environ/BASE_URL_OVH
+      api_key: os.environ/LUCIE_API_KEY_OVH
+  - model_name: Lucie
+    litellm_params:
+      model: openai/lucie-7b-instruct
+      api_base: os.environ/BASE_URL_OVH
+      api_key: os.environ/LUCIE_API_KEY_OVH
+  - model_name: Lucie
+    litellm_params:
+      model: openai/lucie-7b-instruct
+      api_base: os.environ/BASE_URL_OVH
+      api_key: os.environ/LUCIE_API_KEY_OVH
+  - model_name: Lucie
+    litellm_params:
+      model: openai/lucie-7b-instruct
+      api_base: os.environ/BASE_URL_OVH
+      api_key: os.environ/LUCIE_API_KEY_OVH
 
 router_settings:
   routing_strategy: simple-shuffle # Literal["simple-shuffle", "least-busy", "usage-based-routing","latency-based-routing"], default="simple-shuffle"
